@@ -151,6 +151,7 @@ describe('App – form interactions', () => {
     fireEvent.change(dobInput, { target: { name: 'dob', value: '2000-06-15' } })
     expect(dobInput).toHaveValue('2000-06-15')
   })
+  
 })
 
 // ---------------------------------------------------------------------------
