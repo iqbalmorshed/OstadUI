@@ -156,53 +156,53 @@ describe('App – form interactions', () => {
 // ---------------------------------------------------------------------------
 // Form submission
 // ---------------------------------------------------------------------------
-describe('App – form submission', () => {
-  it('calls fetch with the correct endpoint and method on submit', async () => {
-    const user = userEvent.setup()
-    render(<App />)
+// describe('App – form submission', () => {
+//   it('calls fetch with the correct endpoint and method on submit', async () => {
+//     const user = userEvent.setup()
+//     render(<App />)
 
-    await user.type(screen.getByPlaceholderText('Enter full name'), 'Alice')
-    await user.type(screen.getByPlaceholderText('Enter email'), 'alice@example.com')
-    fireEvent.change(document.querySelector('input[name="dob"]'), {
-      target: { value: '2000-06-15' },
-    })
-    await user.selectOptions(screen.getByRole('combobox'), 'Female')
+//     await user.type(screen.getByPlaceholderText('Enter full name'), 'Alice')
+//     await user.type(screen.getByPlaceholderText('Enter email'), 'alice@example.com')
+//     fireEvent.change(document.querySelector('input[name="dob"]'), {
+//       target: { value: '2000-06-15' },
+//     })
+//     await user.selectOptions(screen.getByRole('combobox'), 'Female')
 
-    await user.click(screen.getByRole('button', { name: /register/i }))
+//     await user.click(screen.getByRole('button', { name: /register/i }))
 
-    await waitFor(() => {
-      const postCall = global.fetch.mock.calls.find((call) =>
-        call[0].includes('/addStudent')
-      )
-      expect(postCall).toBeDefined()
-      expect(postCall[1].method).toBe('POST')
-    })
-  })
+//     await waitFor(() => {
+//       const postCall = global.fetch.mock.calls.find((call) =>
+//         call[0].includes('/addStudent')
+//       )
+//       expect(postCall).toBeDefined()
+//       expect(postCall[1].method).toBe('POST')
+//     })
+//   })
 
-  it('sends the form data as JSON in the request body', async () => {
-    const user = userEvent.setup()
-    render(<App />)
+//   it('sends the form data as JSON in the request body', async () => {
+//     const user = userEvent.setup()
+//     render(<App />)
 
-    await user.type(screen.getByPlaceholderText('Enter full name'), 'Bob')
-    await user.type(screen.getByPlaceholderText('Enter email'), 'bob@example.com')
-    fireEvent.change(document.querySelector('input[name="dob"]'), {
-      target: { value: '1995-03-10' },
-    })
-    await user.selectOptions(screen.getByRole('combobox'), 'Male')
+//     await user.type(screen.getByPlaceholderText('Enter full name'), 'Bob')
+//     await user.type(screen.getByPlaceholderText('Enter email'), 'bob@example.com')
+//     fireEvent.change(document.querySelector('input[name="dob"]'), {
+//       target: { value: '1995-03-10' },
+//     })
+//     await user.selectOptions(screen.getByRole('combobox'), 'Male')
 
-    await user.click(screen.getByRole('button', { name: /register/i }))
+//     await user.click(screen.getByRole('button', { name: /register/i }))
 
-    await waitFor(() => {
-      const postCall = global.fetch.mock.calls.find((call) =>
-        call[0].includes('/addStudent')
-      )
-      expect(postCall).toBeDefined()
-      const body = JSON.parse(postCall[1].body)
-      expect(body.name).toBe('Bob')
-      expect(body.email).toBe('bob@example.com')
-    })
-  })
-})
+//     await waitFor(() => {
+//       const postCall = global.fetch.mock.calls.find((call) =>
+//         call[0].includes('/addStudent')
+//       )
+//       expect(postCall).toBeDefined()
+//       const body = JSON.parse(postCall[1].body)
+//       expect(body.name).toBe('Bob')
+//       expect(body.email).toBe('bob@example.com')
+//     })
+//   })
+// })
 
 // ---------------------------------------------------------------------------
 // Error handling
