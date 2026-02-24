@@ -154,9 +154,9 @@ describe('App – form interactions', () => {
 
 })
 
----------------------------------------------------------------------------
-Form submission
----------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Form submission
+// ---------------------------------------------------------------------------
 describe('App – form submission', () => {
   it('calls fetch with the correct endpoint and method on submit', async () => {
     const user = userEvent.setup()
